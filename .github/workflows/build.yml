@@ -12,12 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Create WAR file
         run: |
           jar -cvf myapp.war *
-
-      - name: Upload WAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: myapp
-          path: myapp.war
+- name: Copy WAR to Server using password
+  run: |
+    sshpass -p v1e1n1k1 scp -o StrictHostKeyChecking=no myapp.war ceadmin@192.168.116.128:/home/ceadmin/
