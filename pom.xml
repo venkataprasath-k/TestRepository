@@ -7,6 +7,6 @@
   <packaging>war</packaging>
 
   <build>
-    <finalName>myapp</finalName>
+    <finalName>myapp-v1</finalName>
   </build>
 </project>
